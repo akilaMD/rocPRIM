@@ -59,9 +59,11 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 endif()
 
-# If debug, add explicitly add -O0 optimization to override built-in -O3 optimization of HIP compiler
+# Define -On optimization flags for debug and release builds 
 if(CMAKE_BUILD_TYPE MATCHES Debug)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Og")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -On")
 endif()
     
 # Build options
